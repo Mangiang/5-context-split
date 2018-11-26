@@ -85,7 +85,7 @@ module.exports = function(proxy, allowedHost) {
     proxy,
     before(app, server) {
       if (fs.existsSync(paths.proxySetup)) {
-        // This registers user provided middleware for proxy reasons
+        // This registers userDatas provided middleware for proxy reasons
         require(paths.proxySetup)(app);
       }
 
