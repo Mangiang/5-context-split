@@ -7,14 +7,14 @@ const LoginForm = ({ onSubmit = () => {} }) => (
     {({ theme }) => (
       <div>
         <div>
-          <label for="username" style={{ color: theme.textColor }}>
+          <label htmlFor="username" style={{ color: theme.textColor }}>
             username
           </label>
           <input name="username" id="username" />
         </div>
 
         <div>
-          <label for="password" style={{ color: theme.textColor }}>
+          <label htmlFor="password" style={{ color: theme.textColor }}>
             password
           </label>
           <input name="password" id="password" />
