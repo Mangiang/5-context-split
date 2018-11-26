@@ -18,12 +18,14 @@ class App extends Component {
         return (
             <ThemeContext.Provider value={this.state}>
                 <MainLayout>
-                    <Button onClick={this.state.toggleTheme.bind(this)}>Toggle</Button>
+                    <div style={{position:'fixed', left: 10, top: 0}}>
+                        <Button onClick={this.state.toggleTheme.bind(this)}>Toggle</Button>
+                    </div>
                     <LoginForm/>
                 </MainLayout>
             </ThemeContext.Provider>
         );
-    }
+    }b
 }
 
 export default App;
