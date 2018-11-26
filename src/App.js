@@ -1,10 +1,12 @@
-import React, {Component} from 'react';
-import LoginForm from './components/LoginForm';
-import UserProfile from './components/UserProfile';
+import React, {Component, Suspense} from 'react';
 import Button from './components/Button'
 import ThemeContext, {themes} from './contexts/ThemeContext';
 import UserContext, {userDatas} from './contexts/UserContext';
 import MainLayout from './layouts/MainLayout';
+import ImageLoading from './components/ImageLoading'
+
+const LoginForm = React.lazy(() => import("./components/LoginForm"));
+const UserProfile = React.lazy(() => import("./components/UserProfile"));
 
 class App extends Component {
     toggleTheme = () => {
@@ -50,11 +52,13 @@ class App extends Component {
                         <div style={{position: 'fixed', left: 10, top: 0}}>
                             <Button onClick={this.state.currentTheme.toggleTheme.bind(this)}>Toggle</Button>
                         </div>
+                        <Suspense fallback={<ImageLoading/>}>
                         {
                             !this.state.currentUser.isLoggedIn ?
-                                <LoginForm onSubmit={(username, password) => this.logUser(username)}/> :
+                                <LoginForm onSubmit={(username) => this.logUser(username)}/> :
                                 <UserProfile/>
                         }
+                        </Suspense>
                     </MainLayout>
                 </UserContext.Provider>
             </ThemeContext.Provider>
